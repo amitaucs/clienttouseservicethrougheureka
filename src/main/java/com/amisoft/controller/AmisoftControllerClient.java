@@ -21,14 +21,14 @@ import org.springframework.web.client.RestTemplate;
  */
 
 
-//@EnableCircuitBreaker
+@EnableCircuitBreaker
 @EnableFeignClients
 @EnableZuulProxy
 @EnableDiscoveryClient
 @RestController
 public class AmisoftControllerClient {
 
-   /* private final WelcomeAmisoftClient welcomeAmisoftClient;
+    /*private final WelcomeAmisoftClient welcomeAmisoftClient;
 
     @Autowired
     public AmisoftControllerClient(WelcomeAmisoftClient amisoftClient) {
@@ -44,13 +44,14 @@ public class AmisoftControllerClient {
        this.restTemplate = restTemplate;
    }
 
- /*   public String fallback(String name) {
+    public String fallback() {
         return "Ops...We will get back soon!";
     }
 
-    @HystrixCommand(fallbackMethod = "fallback")*/
+    @HystrixCommand(fallbackMethod = "fallback")
     @RequestMapping(method = RequestMethod.GET, value = "/amisoftproxy")
     String welcome() {
+
 
         ResponseEntity<String> responseEntity = this.restTemplate.exchange("http://amisoft-service/amisoft", HttpMethod.GET,null, String.class);
         return responseEntity.getBody();
