@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @EnableFeignClients
+@FeignClient("amisoft-service")
 public interface WelcomeAmisoftClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/amisoft/{name}")
